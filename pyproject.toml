@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepssim"
+version = "1.0.0"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.12"
+description = "Official Implementation of: A Novel Metric for Detecting Memorization in Generative Models for Brain MRI Synthesis."
+keywords = ["deep learning", "medical imaging", "generative models", "privacy preserving", "brain mri", "ssim"]
+authors = [
+    { name = "Antonio Scardace", email = "antonio.scardace@studium.unict.it" },
+    { name = "Lemuel Puglisi", email = "lemuel.puglisi@phd.unict.it" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "einops==0.8.1",
+    "matplotlib==3.9.2",
+    "monai==1.4.0",
+    "monai-generative==0.2.3",
+    "numpy==1.26.4",
+    "open-clip-torch==3.2.0",
+    "opencv-python==4.9.0.80",
+    "pandas==2.2.3",
+    "psutil==7.0.0",
+    "scikit-image==0.24.0",
+    "scikit-learn==1.6.0",
+    "seaborn==0.13.2",
+    "tensorboard==2.18.0",
+    "torch>=2.1.0",
+    "torchvision==0.21.0",
+    "tqdm==4.67.1",
+    "transformers==4.56.2",
+    "wandb==0.22.3"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]

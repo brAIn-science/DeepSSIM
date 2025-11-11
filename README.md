@@ -12,7 +12,7 @@
 
 <div align="center">
     <a href="http://arxiv.org/abs/2509.16582"><img src="https://img.shields.io/badge/arXiv-pdf-green" alt="arXiv"></a>
-    <a href="https://github.com/brain-science/DeepSSIM/blob/main/LICENSE"><img src="https://img.shields.io/github/license/brain-science/DeepSSIM" alt="License"></a>
+    <a href="https://github.com/brAIn-science/DeepSSIM/blob/main/LICENSE"><img src="https://img.shields.io/github/license/brAIn-science/DeepSSIM" alt="License"></a>
     <a href="https://img.shields.io/badge/Python-3.12%2B-blue"><img src="https://img.shields.io/badge/Python-3.12%2B-blue.svg" alt="Python"></a>
 </div>
 <br/>

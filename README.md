@@ -11,9 +11,10 @@
 </p>
 
 <div align="center">
-    <a href="http://arxiv.org/abs/2509.16582"><img src="https://img.shields.io/badge/arXiv-pdf-green" alt="arXiv"></a>
-    <a href="https://github.com/brAIn-science/DeepSSIM/blob/main/LICENSE"><img src="https://img.shields.io/github/license/brAIn-science/DeepSSIM" alt="License"></a>
-    <a href="https://img.shields.io/badge/Python-3.12%2B-blue"><img src="https://img.shields.io/badge/Python-3.12%2B-blue.svg" alt="Python"></a>
+    <a href="https://img.shields.io/badge/Python-3.12%2B-blue?style=for-the-badge" alt="Python"><img src="https://img.shields.io/badge/Python-3.12%2B-blue?style=for-the-badge" alt="Python"></a>
+    <a href="http://arxiv.org/abs/2509.16582"><img src="https://img.shields.io/badge/arXiv-pdf-green?style=for-the-badge&logo=adobeacrobatreader&logoWidth=20&logoColor=white&color=94DD15" alt="arXiv PDF"></a>
+    <a href="https://huggingface.co/antonioscardace/deepssim/tree/main"><img src="https://img.shields.io/badge/Hugging%20Face-Model-yellow?style=for-the-badge" alt="Hugging Face Models"></a>
+    <a href="https://github.com/brAIn-science/DeepSSIM/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge" alt="License"></a>
 </div>
 <br/>
 
@@ -59,8 +60,7 @@ python scripts/compute_matrix.py \
   --indices_dir PATH \
   --model_path PATH \
   --metric_name {deepssim, chen, dar, semdedup} \
-  --use_gpu \
-  --augment
+  --use_gpu
 ```
 
 To evaluate a given metric, run the following command. This script computes the macro F1 score, as well as per-class precision and recall, based on the similarity matrix and index files previously computed.

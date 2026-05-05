@@ -8,12 +8,6 @@ deepssim.egg-info
 
 /logs/
 /models/
-
-/data_brain/images/*
-/data_brain/indices/*
-/data_brain/matrices/*
-/data_brain/embeddings/*
-/data_chest/images/*
-/data_chest/indices/*
-/data_chest/matrices/*
-/data_chest/embeddings/*
+/experiments/
+/data_brain/
+/data_chest/

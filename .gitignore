@@ -6,8 +6,9 @@
 __pycache__/
 deepssim.egg-info
 
-/logs/
-/models/
-/experiments/
 /data_brain/
 /data_chest/
+/experiments/
+/logs/
+/models/
+/wandb/

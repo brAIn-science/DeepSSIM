@@ -1,6 +1,6 @@
 import wandb
 
-# This function logs the loss and performance value for visualization in Wandb.
+# This function logs the loss and performance value for visualization in WandB.
 # It also prints this value to console.
 # Author: Antonio Scardace
     
@@ -9,8 +9,9 @@ def log_metrics(mode: str, epoch: int, loss_mean: float, loss_std: float, mae: f
     print('Standard Deviation [MSE] =', loss_std)
     print('Performance [MAE] =', mae)
 
-    wandb.log(step=epoch, data={
+    wandb.log(data={
         mode + '/loss_mean': loss_mean,
         mode + '/loss_std': loss_std,
-        mode + '/mae': mae
+        mode + '/mae': mae,
+        'epoch': epoch,
     })

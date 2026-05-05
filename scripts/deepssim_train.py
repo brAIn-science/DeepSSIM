@@ -1,4 +1,5 @@
 import os
+import wandb
 import torch
 import psutil
 import random
@@ -38,10 +39,20 @@ if __name__ == '__main__':
     parser.add_argument('--dropout_prob',       type=float, default=0.33)
     args = parser.parse_args()
 
-    BASE_LOG_PATH = os.path.join('..', 'logs', args.exp_name)
-    OUTPUT_PATH = os.path.join(BASE_LOG_PATH, 'checkpoints')
-    for path in [BASE_LOG_PATH, OUTPUT_PATH]:
-        os.makedirs(path, exist_ok=True)
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    OUTPUT_PATH = os.path.join(BASE_DIR, '..', 'logs', args.exp_name, 'checkpoints')
+    OUTPUT_PATH = os.path.abspath(OUTPUT_PATH)
+    os.makedirs(OUTPUT_PATH, exist_ok=True)
+
+    wandb.init(
+        project='DeepSSIM',
+        name=args.exp_name,
+        settings=wandb.Settings(x_disable_stats=True, x_disable_meta=True)
+    )
+
+    wandb.define_metric("epoch", hidden=True) 
+    wandb.define_metric("train/*", step_metric="epoch")
+    wandb.define_metric("valid/*", step_metric="epoch")
 
     # Sets fixed seeds to ensure reproducibility.
     # This removes randomness and ensures consistent results across runs.
@@ -97,7 +108,7 @@ if __name__ == '__main__':
     # For each epoch, the model alternates between training and validation modes.
     # An AverageMetricsMeter tracks the loss (MSE) and the performance (MAE) for each phase.
     # The best model is saved after each epoch if it improves over previous results.
-    # All progress is logged to TensorBoard, and GPU memory is cleared after each phase to prevent memory issues.
+    # All progress is logged to Weights & Biases, and GPU memory is cleared after each phase to prevent memory issues.
 
     best_valid_loss = float('inf')
     meter = AverageMetricsMeter()
@@ -130,5 +141,8 @@ if __name__ == '__main__':
             torch.cuda.empty_cache()
 
             if mode == 'valid' and meter.loss_mean() < best_valid_loss:
+                print('Saved at epoch', epoch, 'with MSE', meter.loss_mean())
                 best_valid_loss = meter.loss_mean()
                 save_model_and_optimizer(model.embedding_net, optimizer, OUTPUT_PATH)
+
+    wandb.finish()

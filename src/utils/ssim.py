@@ -69,5 +69,5 @@ def process_batch(batch: tuple) -> int:
         ssim_values.append(calculate_ssim(real_path, synth_path, normalise=True))
 
     output_path = os.path.join(tmp_dir, str(ridx) + '.npz')
-    np.savez(output_path, data=np.array(ssim_values, dtype=np.float16))
+    np.savez(output_path, data=np.array(ssim_values, dtype=np.float32))
     return ridx

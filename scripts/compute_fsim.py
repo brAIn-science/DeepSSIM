@@ -33,7 +33,7 @@ if __name__ == '__main__':
     real_indices = np.load(args.real_indices_path)['data'].tolist()
     synth_indices = np.load(args.synth_indices_path)['data'].tolist()
     n, m = len(real_indices), len(synth_indices)
-    fsim_matrix = np.zeros((n, m), dtype=np.float16)
+    fsim_matrix = np.zeros((n, m), dtype=np.float32)
 
     # Pre-computes FSIM features (phase congruency and gradient magnitude)
     # for all synthetic images to avoid redundant computation in the main loop.

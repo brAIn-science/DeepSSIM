@@ -96,6 +96,7 @@ if __name__ == '__main__':
     synth_embs_tensor = torch.cat([torch.from_numpy(e).unsqueeze(0) for e in synth_embs], dim=0)
     score_matrix = scorer.compute_matrix(train_embs_tensor, synth_embs_tensor)
 
-    np.savez(os.path.join(args.matrices_dir, args.metric_name + '.npz'), data=score_matrix.astype(np.float16))
+    is_augmented = '_augmented' if args.augment else ''
+    np.savez(os.path.join(args.matrices_dir, args.metric_name + is_augmented + '.npz'), data=score_matrix.astype(np.float16))
     np.savez(os.path.join(args.indices_dir, 'real.npz'), data=np.array(train_ids))
     np.savez(os.path.join(args.indices_dir, 'synth.npz'), data=np.array(synth_ids))

@@ -1,5 +1,6 @@
 import os
 import wandb
+import monai
 import torch
 import psutil
 import random
@@ -57,6 +58,7 @@ if __name__ == '__main__':
     # Sets fixed seeds to ensure reproducibility.
     # This removes randomness and ensures consistent results across runs.
 
+    monai.utils.set_determinism(42)
     torch.manual_seed(42)
     np.random.seed(42)
     random.seed(42)
@@ -103,6 +105,10 @@ if __name__ == '__main__':
     model = SimilarityNet(args.emb_dim, args.dropout_prob).to(device)
     optimizer = AdamW(model.parameters(), args.learning_rate, weight_decay=args.weight_decay)
     criterion = MSELoss()
+
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    total_params = sum(p.numel() for p in model.parameters())
+    print('Trainable Parameters:', trainable_params, 'out of', total_params)
 
     # It is the main training and validation loop.
     # For each epoch, the model alternates between training and validation modes.

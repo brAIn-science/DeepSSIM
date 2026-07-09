@@ -37,7 +37,7 @@ if __name__ == '__main__':
     real_indices = np.load(args.real_indices_path)['data'].tolist()
     synth_indices = np.load(args.synth_indices_path)['data'].tolist()
     n, m = len(real_indices), len(synth_indices)
-    ssim_matrix = np.zeros((n, m), dtype=np.float16)
+    ssim_matrix = np.zeros((n, m), dtype=np.float32)
 
     # The generator function prevents loading all data into memory at once.
     # Each batch processes a single row of SSIM scores in parallel.

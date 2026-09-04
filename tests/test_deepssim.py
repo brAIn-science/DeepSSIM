@@ -1,4 +1,5 @@
 import torch
+import monai
 import random
 import argparse
 import numpy as np
@@ -9,9 +10,9 @@ from tqdm import tqdm
 from src.utils.utils import get_image_path
 from src.factories.registry import MetricFactoryRegistry
 
-# This script verifies the correctness of the DeepSSIM similarity matrix.
-# It compares stored DeepSSIM values with freshly computed DeepSSIM scores between image pairs.
-# It is useful to ensure the integrity and consistency of the precomputed matrix.
+# This script verifies the correctness of the precomputed DeepSSIM similarity matrix.
+# It compares the stored values with freshly computed DeepSSIM scores for image pairs.
+# It helps ensure the integrity and consistency of the precomputed matrix.
 # Author: Antonio Scardace
 
 if __name__ == '__main__':
@@ -31,6 +32,11 @@ if __name__ == '__main__':
     synth_indices = np.load(args.synth_indices_path)['data'].tolist()
     score_matrix = np.load(args.matrix_path)['data']
 
+    monai.utils.misc.set_determinism(42)
+    torch.manual_seed(42)
+    np.random.seed(42)
+    random.seed(42)
+
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     metric_factory = MetricFactoryRegistry.get_metric('deepssim', False)
     feature_extractor = metric_factory.create_feature_extractor(args.model_path, device)
@@ -42,11 +48,7 @@ if __name__ == '__main__':
     matrix_deepssim_list = []
     actual_deepssim_list = []
 
-    torch.manual_seed(42)
-    np.random.seed(42)
-    random.seed(42)
-
-    for real_key in tqdm(real_indices, 'Verifying DeepSSIM Matrix', len(real_indices)):
+    for real_key in tqdm(real_indices, 'Verifying the DeepSSIM Matrix', len(real_indices)):
         synth_key = random.choice(synth_indices)
         sidx, ridx = synth_indices.index(synth_key), real_indices.index(real_key)
         matrix_deepssim_list.append(score_matrix[ridx, sidx])
@@ -61,5 +63,4 @@ if __name__ == '__main__':
         
     diff = np.abs(np.array(matrix_deepssim_list) - np.array(actual_deepssim_list))
     mae, std_dev = np.mean(diff), np.std(diff)
-    print('Mean Absolute Error =', mae)
-    print('Standard Deviation =', std_dev)
+    print('MAE =', mae, '±', std_dev)

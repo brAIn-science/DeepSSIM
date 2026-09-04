@@ -6,7 +6,8 @@ from open_clip import create_model_from_pretrained
 from src.extractors.base import AbstractFeatureExtractor
 
 # This class implements a Concrete Product in the Abstract Factory pattern for feature extraction.
-# It performs inference using the SemDeDup approach to compute image embeddings.
+# It performs inference with the SemDeDup approach to compute image embeddings, as described in
+# "SemDeDup: Data-efficient learning at web-scale through semantic deduplication".
 # Reference: https://openreview.net/forum?id=u96ZBg_Shna
 # Author: Antonio Scardace
 

@@ -3,9 +3,9 @@ import torch
 from abc import ABC
 from abc import abstractmethod
 
-# This class defines an Abstract Product in an Abstract Factory pattern for feature extraction.
+# This class defines an Abstract Product in the Abstract Factory pattern for feature extraction.
 # It specifies the interface for computing image embeddings for similarity-based metrics.
-# Subclasses must implement batch and single image embedding methods.
+# Subclasses must implement methods for computing embeddings for both batches and individual images.
 # Author: Antonio Scardace
 
 class AbstractFeatureExtractor(ABC):

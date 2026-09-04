@@ -4,10 +4,9 @@ import torch.nn.functional as F
 
 from src.train.embedder_net import ImageEmbedder
 
-# This class defines a Siamese Neural Network designed to approximate the SSIM score.
-# It uses a shared embedding network to project two input images into a common feature space.
-# The resulting embeddings are L2-normalized and their cosine similarity is computed.
-# The model learns to produce cosine similarities that approximate SSIM scores through MSE loss.
+# This class defines a Siamese neural network designed to approximate the SSIM score.
+# It projects an image pair into a shared latent space using a shared feature extractor.
+# The cosine similarity between the L2-normalized embeddings serves as the predicted continuous score.
 # Author: Antonio Scardace
 
 class SimilarityNet(nn.Module):

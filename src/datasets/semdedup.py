@@ -8,7 +8,7 @@ from monai.data import Dataset
 
 # This class defines a custom dataset for the SemDeDup approach.
 # The dataset handles image loading and transformation using a specified pipeline.
-# Each sample contains an image (transformed) and its corresponding UID.
+# Each sample contains a transformed image and its corresponding UID.
 # Author: Antonio Scardace
 
 class SemDeDupDataset(Dataset):

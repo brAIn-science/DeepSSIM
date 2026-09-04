@@ -3,11 +3,11 @@ import numpy as np
 
 from src.scorers.base import AbstractEmbeddingScorer
 
-# This class handles the scoring logic based on the Chen et al. approach.
-# Intended for use in embedding-based similarity and deduplication tasks.
+# This class handles the scoring logic based on the Chen et al. (UMS (SSCD)) approach.
+# It is intended for use in embedding-based similarity and deduplication tasks.
 # Author: Antonio Scardace
 
-class ChenEmbeddingScorer(AbstractEmbeddingScorer):
+class UmsSscdEmbeddingScorer(AbstractEmbeddingScorer):
 
     # Computes the similarity matrix between two sets of embeddings.
     # Uses cosine similarity after normalizing the embeddings.
@@ -23,6 +23,6 @@ class ChenEmbeddingScorer(AbstractEmbeddingScorer):
     # 2 = Similar (score in between thresholds)
 
     def classify(self, score: float) -> int:
-        if score <= 0.4: return 0
-        elif score > 0.6: return 1
+        if score <= 0.84: return 0
+        elif score > 0.89: return 1
         else: return 2

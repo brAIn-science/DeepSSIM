@@ -6,11 +6,10 @@ import monai.transforms
 from monai.data import Dataset
 
 from src.utils.utils import get_image_path
-from src.utils.ssim import load_grayscale_image
+from src.utils.utils import load_grayscale_image
 
-# This class is a custom PyTorch Dataset for loading grayscale image pairs along with their SSIM labels.
-# Each sample consists of a "real" and a "synthetic" image, along with the related SSIM score.
-# It applies light data augmentation using MONAI transforms: Random flips, rotation, and contrast shift.
+# This class implements a custom PyTorch Dataset for loading real and synthetic grayscale image pairs along with their ground-truth SSIM scores.
+# It leverages MONAI to apply anatomy-preserving spatial and intensity augmentations, improving overall model generalization.
 # Author: Antonio Scardace
 
 class ImagePairDataset(Dataset):
@@ -19,16 +18,18 @@ class ImagePairDataset(Dataset):
         self.data = data
         self.base_path = base_path
         self.transforms = monai.transforms.Compose([
-            monai.transforms.RandFlip(spatial_axis=0, prob=0.33),
-            monai.transforms.RandFlip(spatial_axis=1, prob=0.33),
-            monai.transforms.RandRotate(range_x=0.17, prob=0.33),
-            monai.transforms.RandAdjustContrast(gamma=(0.5, 1.5), prob=0.33),
+            monai.transforms.RandFlip(spatial_axis=0, prob=0.25),
+            monai.transforms.RandFlip(spatial_axis=1, prob=0.25),
+            monai.transforms.RandAffine(rotate_range=0.09, translate_range=(4.0, 4.0), padding_mode='zeros', prob=0.75),
+            monai.transforms.RandZoom(min_zoom=0.9, max_zoom=1.05, prob=0.75),
+            monai.transforms.RandBiasField(degree=3, coeff_range=(0.0, 0.1), prob=0.5),
+            monai.transforms.RandAdjustContrast(gamma=(0.5, 1.5), prob=0.25),
+            monai.transforms.RandGaussianSmooth(sigma_x=(0.25, 0.5), sigma_y=(0.25, 0.50), prob=0.25),
             monai.transforms.ToTensor()
         ])
-    
-    # Loads a grayscale pair of images and normalizes them by lightness.
-    # Adds a channel dimension to each image: [H, W] -> [1, H, W].
-    # Applies MONAI transforms, then repeats the channel to convert from [1, H, W] to [3, H, W].
+
+    # Loads and normalizes the requested image pair, injecting a unitary channel dimension for MONAI compatibility.
+    # Following the augmentation pipeline, the grayscale channel is duplicated to satisfy the three-channel input requirement of the backbone.
     
     def __getitem__(self, idx: int) -> dict:
         sample = self.data.iloc[idx]
@@ -42,5 +43,5 @@ class ImagePairDataset(Dataset):
         return {
             'img1': img1,
             'img2': img2,
-            'ssim': torch.tensor(sample['ssim'], dtype=torch.float16)
+            'ssim': torch.tensor(sample['ssim'], dtype=torch.float32)
         }

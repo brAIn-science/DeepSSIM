@@ -5,8 +5,8 @@ from scipy.spatial.distance import cdist
 
 from src.scorers.base import AbstractEmbeddingScorer
 
-# This class handles the scoring logic based on the Dar et al. approach.
-# Intended for use in embedding-based similarity and deduplication tasks.
+# This class handles the scoring logic based on the approach proposed by Dar et al.
+# It is intended for use in embedding-based similarity and deduplication tasks.
 # Author: Antonio Scardace
 
 class DarEmbeddingScorer(AbstractEmbeddingScorer):

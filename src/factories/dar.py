@@ -11,8 +11,8 @@ from src.scorers.base import AbstractEmbeddingScorer
 from src.extractors.base import AbstractFeatureExtractor
 
 # This class implements a Concrete Factory for Dar et al. components.
-# It creates datasets, feature extractors, and scorers for the Dar et al. approach.
-# Follows the Abstract Factory pattern for modular evaluation pipeline design.
+# It creates datasets, feature extractors, and scorers for the approach proposed by Dar et al.
+# It follows the Abstract Factory pattern to enable a modular evaluation pipeline.
 # Author: Antonio Scardace
 
 class DarFactory(AbstractMetricFactory):

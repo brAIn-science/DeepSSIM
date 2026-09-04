@@ -1,10 +1,11 @@
 import wandb
 
-# This function logs the loss and performance value for visualization in WandB.
-# It also prints this value to console.
+# This function outputs the computed epoch metrics to the console and logs them to Weights & Biases for experiment tracking.
+# It tracks the Mean Squared Error (MSE) loss, its standard deviation, and the Mean Absolute Error (MAE).
 # Author: Antonio Scardace
     
 def log_metrics(mode: str, epoch: int, loss_mean: float, loss_std: float, mae: float) -> None:
+    
     print('Loss [MSE] =', loss_mean)
     print('Standard Deviation [MSE] =', loss_std)
     print('Performance [MAE] =', mae)

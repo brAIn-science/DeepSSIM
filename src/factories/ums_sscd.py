@@ -4,19 +4,19 @@ import monai.transforms
 
 from monai.data import Dataset
 
-from src.datasets.chen import ChenDataset
-from src.scorers.chen import ChenEmbeddingScorer
-from src.extractors.chen import ChenFeatureExtractor
+from src.datasets.ums_sscd import UmsSscdDataset
+from src.scorers.ums_sscd import UmsSscdEmbeddingScorer
+from src.extractors.ums_sscd import UmsSscdFeatureExtractor
 from src.factories.base import AbstractMetricFactory
 from src.scorers.base import AbstractEmbeddingScorer
 from src.extractors.base import AbstractFeatureExtractor
 
-# This class implements a Concrete Factory for Chen et al. components.
-# It creates datasets, feature extractors, and scorers of the Chen et al. apporach.
-# Follows the Abstract Factory pattern for modular evaluation pipeline design.
+# This class implements a Concrete Factory for Chen et al. (UMS (SSCD)) components.
+# It creates datasets, feature extractors, and scorers for the approach proposed by Chen et al.
+# It follows the Abstract Factory pattern to enable a modular evaluation pipeline.
 # Author: Antonio Scardace
 
-class ChenFactory(AbstractMetricFactory):
+class UmsSscdFactory(AbstractMetricFactory):
 
     def __init__(self, augment: bool) -> None:
 
@@ -37,10 +37,10 @@ class ChenFactory(AbstractMetricFactory):
         ])
 
     def create_dataset(self, data: list[dict[str, str]]) -> Dataset:
-        return ChenDataset(data, self.transforms)
+        return UmsSscdDataset(data, self.transforms)
 
     def create_feature_extractor(self, model_path: str, device: torch.device) -> AbstractFeatureExtractor:
-        return ChenFeatureExtractor(model_path, device, self.transforms)
+        return UmsSscdFeatureExtractor(model_path, device, self.transforms)
 
     def create_embedding_scorer(self) -> AbstractEmbeddingScorer:
-        return ChenEmbeddingScorer()
+        return UmsSscdEmbeddingScorer()

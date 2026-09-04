@@ -11,9 +11,9 @@ def save_model_and_optimizer(net: torch.nn.Module, optim: torch.optim.Optimizer,
     torch.save(optim.state_dict(), os.path.join(path, 'optimizer_state.pth'))
     print('Best model and optimizer state saved successfully.')
 
-# These functions handle the loading of a TorchScript model and its associated optimizer state.
+# These functions handle loading a TorchScript model and its associated optimizer state.
 # The optimizer class must be provided to reconstruct the optimizer.
-# This setup enables resuming inference or training from previously saved checkpoints.
+# This setup enables resuming training or inference from previously saved checkpoints.
 # Author: Antonio Scardace
 
 def load_model(path: str, device: str) -> torch.nn.Module:

@@ -1,7 +1,7 @@
 import numpy as np
 
 # This class computes average metrics over multiple samples.
-# It provides attributes and methods to track loss and performance metrics over time.
+# It provides attributes and methods for tracking loss and performance metrics over time.
 # Author: Antonio Scardace
 
 class AverageMetricsMeter:

@@ -4,7 +4,7 @@ import numpy as np
 from src.scorers.base import AbstractEmbeddingScorer
 
 # This class handles the scoring logic based on the SemDeDup approach.
-# Intended for use in embedding-based similarity and deduplication tasks.
+# It is intended for use in embedding-based similarity and deduplication tasks.
 # Author: Antonio Scardace
 
 class SemDeDupEmbeddingScorer(AbstractEmbeddingScorer):

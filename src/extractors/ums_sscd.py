@@ -7,11 +7,12 @@ from einops import rearrange
 from src.extractors.base import AbstractFeatureExtractor
 
 # This class implements a Concrete Product in the Abstract Factory pattern for feature extraction.
-# It performs inference using the Chen et al. approach to compute image embeddings.
-# Reference: https://arxiv.org/abs/2202.10261
+# It performs inference with the approach proposed by Chen et al. to compute image embeddings, as described in
+# "SIDE: Surrogate Conditional Data Extraction from Diffusion Models".
+# Reference: https://ojs.aaai.org/index.php/AAAI/article/view/36972
 # Author: Antonio Scardace
 
-class ChenFeatureExtractor(AbstractFeatureExtractor):
+class UmsSscdFeatureExtractor(AbstractFeatureExtractor):
 
     # Loads the pre-trained TorchScript model and moves it to the specified device.
     # Freezes model parameters to disable gradient updates.

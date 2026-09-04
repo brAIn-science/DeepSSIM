@@ -6,12 +6,12 @@ from typing import Union
 from einops import rearrange
 from monai.data import Dataset
 
-# This class defines a custom dataset for the Chen et al. approach.
+# This class defines a custom dataset for the approach proposed by Chen et al.
 # The dataset handles image loading and transformation using a specified pipeline.
-# Each sample contains an image (transformed) and its corresponding UID.
+# Each sample contains a transformed image and its corresponding UID.
 # Author: Antonio Scardace
 
-class ChenDataset(Dataset):
+class UmsSscdDataset(Dataset):
 
     def __init__(self, data: list[dict[str, str]], transforms) -> None:
         self.data = data

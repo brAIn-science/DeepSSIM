@@ -8,7 +8,7 @@ from src.scorers.base import AbstractEmbeddingScorer
 from src.extractors.base import AbstractFeatureExtractor
 
 # This class defines an Abstract Factory for constructing components used in similarity-based evaluation.
-# It declares methods to create datasets, feature extractors, and embedding scorers.
+# It declares methods for creating datasets, feature extractors, and embedding scorers.
 # Concrete factories must implement all creation methods.
 # Author: Antonio Scardace
 

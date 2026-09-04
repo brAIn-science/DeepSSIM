@@ -4,11 +4,11 @@ import numpy as np
 from typing import Union
 from monai.data import Dataset
 
-from src.utils.ssim import load_grayscale_image
+from src.utils.utils import load_grayscale_image
 
 # This class defines a custom dataset for the DeepSSIM approach.
 # The dataset handles image loading and transformation using a specified pipeline.
-# Each sample contains an image (transformed) and its corresponding UID.
+# Each sample contains a transformed image and its corresponding UID.
 # Author: Antonio Scardace
 
 class DeepSsimDataset(Dataset):

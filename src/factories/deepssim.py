@@ -12,7 +12,7 @@ from src.extractors.deepssim import DeepSsimFeatureExtractor
 
 # This class implements a Concrete Factory for DeepSSIM components.
 # It creates datasets, feature extractors, and scorers for our approach.
-# Follows the Abstract Factory pattern for modular evaluation pipeline design.
+# It follows the Abstract Factory pattern to enable a modular evaluation pipeline.
 # Author: Antonio Scardace
 
 class DeepSsimFactory(AbstractMetricFactory):

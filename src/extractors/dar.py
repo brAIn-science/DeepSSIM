@@ -8,8 +8,9 @@ from torchvision.models import ResNet50_Weights
 from src.extractors.base import AbstractFeatureExtractor
 
 # This class implements a Concrete Product in the Abstract Factory pattern for feature extraction.
-# It performs inference using a Contrastive Learning approach to compute image embeddings.
-# Reference: https://arxiv.org/pdf/2402.01054
+# It performs inference with a Contrastive Learning approach to compute image embeddings, as described in
+# "Unconditional latent diffusion models memorize patient imaging data".
+# Reference: https://www.nature.com/articles/s41551-025-01468-8
 # Author: Lemuel Puglisi
 
 class DarFeatureExtractor(nn.Module, AbstractFeatureExtractor):

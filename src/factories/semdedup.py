@@ -11,8 +11,8 @@ from src.scorers.base import AbstractEmbeddingScorer
 from src.extractors.base import AbstractFeatureExtractor
 
 # This class implements a Concrete Factory for SemDeDup components.
-# It creates datasets, feature extractors, and scorers of the SemDeDup apporach.
-# Follows the Abstract Factory pattern for modular evaluation pipeline design.
+# It creates datasets, feature extractors, and scorers for the SemDeDup approach.
+# It follows the Abstract Factory pattern to enable a modular evaluation pipeline.
 # Author: Antonio Scardace
 
 class SemDeDupFactory(AbstractMetricFactory):

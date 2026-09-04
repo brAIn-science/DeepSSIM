@@ -1,11 +1,13 @@
 import torch
 
-from src.utils.ssim import load_grayscale_image
+from src.utils.utils import load_grayscale_image
 from src.extractors.base import AbstractFeatureExtractor
 
 # This class implements a Concrete Product in the Abstract Factory pattern for feature extraction.
-# It performs inference using the DeepSSIM approach to compute image embeddings.
-# Reference: https://arxiv.org/pdf/2509.16582
+# It performs inference with the DeepSSIM approach to compute image embeddings.
+# "A Novel Metric for Detecting Memorization in Generative Models for Brain MRI Synthesis".
+# "Auditing Patient Privacy in Medical Generative Models: Scalable Memorization Detection with DeepSSIM++".
+# Reference: https://ieeexplore.ieee.org/document/11492740 | https://arxiv.org/abs/2609.03615
 # Author: Antonio Scardace
 
 class DeepSsimFeatureExtractor(AbstractFeatureExtractor):

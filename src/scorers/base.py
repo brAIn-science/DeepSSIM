@@ -5,8 +5,8 @@ from abc import ABC
 from abc import abstractmethod
 
 # This class defines an Abstract Product in the Abstract Factory pattern for embedding scoring.
-# It specifies the interface to compute similarity matrices from embeddings and perform classification.
-# Subclasses must implement methods to compute score matrices and classify similarity scores.
+# It specifies the interface for computing similarity matrices from embeddings and performing classification.
+# Subclasses must implement methods for computing similarity matrices and classifying similarity scores.
 # Author: Antonio Scardace
 
 class AbstractEmbeddingScorer(ABC):

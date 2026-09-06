@@ -18,7 +18,7 @@
     <a href="https://img.shields.io/badge/Python-3.12%2B-blue?style=for-the-badge"><img src="https://img.shields.io/badge/Python-3.12%2B-blue?style=for-the-badge" alt="Python"></a>
     <a href="https://arxiv.org/abs/2609.03615"><img src="https://img.shields.io/badge/arXiv-pdf-green?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&color=94DD15" alt="arXiv PDF"></a>
     <a href="https://ieeexplore.ieee.org/document/11492740"><img src="https://img.shields.io/badge/WACV-PDF-green?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&color=94DD15" alt="WACV PDF"></a>
-    <a href="https://huggingface.co/antonioscardace/deepssim/tree/main"><img src="https://img.shields.io/badge/Hugging%20Face-Model%20&amp;%20Data-yellow?style=for-the-badge" alt="Hugging Face"></a>
+    <a href="https://huggingface.co/datasets/antonioscardace/deepssim"><img src="https://img.shields.io/badge/Hugging%20Face-Dataset-yellow?style=for-the-badge" alt="Hugging Face"></a>
     <a href="https://github.com/brAIn-science/DeepSSIM/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge" alt="License"></a>
 </div>
 <br/>
@@ -106,7 +106,7 @@ python scripts/plot_reports.py \
 WACV 2026 Proceedings:
 
 ```bib
-@inproceedings{scardace2026deep,
+@inproceedings{scardace2026novel,
     title={A Novel Metric for Detecting Memorization in Generative Models for Brain MRI Synthesis},
     booktitle={2026 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)}, 
     author={Scardace, Antonio and Puglisi, Lemuel and Guarnera, Francesco and Battiato, Sebastiano and Ravì, Daniele},
@@ -119,7 +119,7 @@ WACV 2026 Proceedings:
 Journal Extension Preprint:
 
 ```bib
-@misc{scardace2026auditingpatientprivacymedical,
+@misc{scardace2026auditing,
     title={Auditing Patient Privacy in Medical Generative Models: Scalable Memorization Detection with DeepSSIM++}, 
     author={Antonio Scardace and Francesco Guarnera and Sebastiano Battiato and Daniele Ravì},
     year={2026},

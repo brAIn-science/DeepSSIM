@@ -3,7 +3,6 @@ message: "If you use this work, please cite it as below."
 title: "A Novel Metric for Detecting Memorization in Generative Models for Brain MRI Synthesis"
 version: 2.0.0
 license: MIT
-repository-code: "https://github.com/brAIn-science/DeepSSIM"
 authors:
   - family-names: "Scardace"
     given-names: "Antonio"

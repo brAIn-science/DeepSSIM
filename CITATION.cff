@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "A Novel Metric for Detecting Memorization in Generative Models for Brain MRI Synthesis"
+authors:
+  - family-names: "Scardace"
+    given-names: "Antonio"
+  - family-names: "Puglisi"
+    given-names: "Lemuel"
+  - family-names: "Guarnera"
+    given-names: "Francesco"
+  - family-names: "Battiato"
+    given-names: "Sebastiano"
+  - family-names: "Ravì"
+    given-names: "Daniele"
+preferred-citation:
+  type: conference-paper
+  title: "A Novel Metric for Detecting Memorization in Generative Models for Brain MRI Synthesis"
+  authors:
+    - family-names: "Scardace"
+      given-names: "Antonio"
+    - family-names: "Puglisi"
+      given-names: "Lemuel"
+    - family-names: "Guarnera"
+      given-names: "Francesco"
+    - family-names: "Battiato"
+      given-names: "Sebastiano"
+    - family-names: "Ravì"
+      given-names: "Daniele"
+  collection-title: "2026 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)"
+  year: 2026
+  start: 3868
+  end: 3877
+  doi: "10.1109/WACV61042.2026.00377"

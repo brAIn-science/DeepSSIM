@@ -42,8 +42,13 @@ if __name__ == '__main__':
     metric_factory = MetricFactoryRegistry.get_metric(args.metric_name)
     scorer = metric_factory.create_embedding_scorer()
 
+    real_pos = {k: i for i, k in enumerate(real_indices)}
+    synth_pos = {k: i for i, k in enumerate(synth_indices)}
+
     for i, row in tqdm(dataset.iterrows(), 'Matching labels and scores', len(dataset)):
-        ridx, sidx = real_indices.index(row['real_key']), synth_indices.index(row['synth_key'])
+        ridx = real_pos[row['real_key']]
+        sidx = synth_pos[row['synth_key']]
+        
         score = score_matrix[ridx, sidx]
         scores.append([score])
         y_pred.append(scorer.classify(score))

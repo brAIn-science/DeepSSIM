@@ -141,7 +141,7 @@ if __name__ == '__main__':
                     if torch.isnan(loss):
                         print('NaN loss detected during', mode, 'at epoch', epoch)
                         wandb.finish()
-                        raise SystemExit(0)
+                        raise SystemExit(1)
                     
                     mae = torch.mean(torch.abs(y_pred - y_true)).item()
                     meter.add(loss.item(), mae, len(batch))

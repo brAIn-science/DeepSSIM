@@ -18,7 +18,6 @@ def save_model_and_optimizer(net: torch.nn.Module, optim: torch.optim.Optimizer,
 
 def load_model(path: str, device: str) -> torch.nn.Module:
     model = torch.jit.load(os.path.join(path, 'best_model_jit.pt'), map_location=device)
-    model.to(device)
     model.eval()
     return model
 

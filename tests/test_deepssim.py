@@ -48,15 +48,18 @@ if __name__ == '__main__':
     matrix_deepssim_list = []
     actual_deepssim_list = []
 
-    for real_key in tqdm(real_indices, 'Verifying the DeepSSIM Matrix', len(real_indices)):
-        synth_key = random.choice(synth_indices)
-        sidx, ridx = synth_indices.index(synth_key), real_indices.index(real_key)
+    real_pos = {k: i for i, k in enumerate(real_indices)}
+    synth_pos = {k: i for i, k in enumerate(synth_indices)}
+
+    for ridx, real_key in tqdm(enumerate(real_indices), 'Verifying the DeepSSIM Matrix', len(real_indices)):
+        sidx = random.randrange(len(synth_indices))
+        synth_key = synth_indices[sidx]
         matrix_deepssim_list.append(score_matrix[ridx, sidx])
 
         rpath = get_image_path(real_key, args.dataset_images_dir)
         spath = get_image_path(synth_key, args.dataset_images_dir)
         r_emb, s_emb = feature_extractor.get_image_embedding(rpath), feature_extractor.get_image_embedding(spath)
-        actual_deepssim_list.append(F.cosine_similarity(r_emb, s_emb, dim=0).item())      
+        actual_deepssim_list.append(F.cosine_similarity(r_emb, s_emb, dim=0).item())
 
     # Computes the mean absolute error and standard deviation between stored and computed SSIM values.
     # Useful for theoretical analysis and for the matrix validation.

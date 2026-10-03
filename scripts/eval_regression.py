@@ -33,7 +33,13 @@ if __name__ == '__main__':
     matrix_ssim_list = []
     actual_ssim_list = []
 
+    real_pos = {k: i for i, k in enumerate(real_indices)}
+    synth_pos = {k: i for i, k in enumerate(synth_indices)}
+
     for _, row in tqdm(testset.iterrows(), 'Computing predicted scores', len(testset)):
+        ridx = real_pos[row['real_key']]
+        sidx = synth_pos[row['synth_key']]
+        
         ridx = real_indices.index(row['real_key'])
         sidx = synth_indices.index(row['synth_key'])
         matrix_ssim_list.append(score_matrix[ridx, sidx])

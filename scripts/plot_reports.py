@@ -36,13 +36,17 @@ if __name__ == '__main__':
     # Applies a custom categorical order to logically separate different, similar, and duplicate classes.
     # Renders and saves the final thresholded histogram.
 
+    real_pos = {k: i for i, k in enumerate(real_indices)}
+    synth_pos = {k: i for i, k in enumerate(synth_indices)}
+
     results = []
     for i, row in tqdm(dataset.iterrows(), 'Matching labels and scores', len(dataset)):
-        ridx, sidx = real_indices.index(row['real_key']), synth_indices.index(row['synth_key'])
-        results.append([row['label'], score_matrix[ridx, sidx]])
+        ridx = real_pos[row['real_key']]
+        sidx = synth_pos[row['synth_key']]
+        results.append([row['final_label'], score_matrix[ridx, sidx]])
 
     thresholds = {args.low_threshold, args.upper_threshold}
     custom_order = [0, 2, 1]
-    df = pd.DataFrame(results, columns=['label', 'score'])
+    df = pd.DataFrame(results, columns=['final_label', 'score'])
     plotter = PlotHistogram(df, args.exp_title, thresholds, args.output_path)
     plotter.save_hist(custom_order)

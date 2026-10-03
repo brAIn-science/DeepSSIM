@@ -18,7 +18,7 @@ class DeepSsimFeatureExtractor(AbstractFeatureExtractor):
     def __init__(self, model_path: str, device: torch.device, transforms) -> None:
         self.transforms = transforms
         self.device = device
-        self.model = torch.jit.load(model_path).to(self.device)
+        self.model = torch.jit.load(model_path, map_location=device)
         self.model.eval()
         for param in self.model.parameters():
             param.requires_grad = False
